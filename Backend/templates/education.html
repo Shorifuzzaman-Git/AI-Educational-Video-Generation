@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../static/reveal/dist/reveal.css" />
+    <link rel="stylesheet" href="../static/reveal/dist/theme/white.css" />
+    <link rel="stylesheet" href="../static/css/education.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Education Slides</title>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="title-slide">
+          <div class="title-content">
+            <div class="badge">Educational lesson</div>
+            <h1>{{ course_title }}</h1>
+            <p>AI-generated lecture presentation</p>
+          </div>
+        </section>
+
+        {% for slide in slides %}
+        <section>
+          <div class="slide-wrapper">
+            <div class="left-panel">
+              <div class="section-label">Lesson concept</div>
+
+              <h2>{{ slide.title }}</h2>
+
+              <p class="subtitle">{{ slide.subtitle }}</p>
+
+              <ul>
+                {% for bullet in slide.bullets %}
+                <li class="fragment fade-up">{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div class="right-panel fragment fade-left">
+              <div class="image-card">
+                <img src="../static/images/{{ slide.image }}" alt="Slide image" />
+              </div>
+            </div>
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="../static/reveal/dist/reveal.js"></script>
+
+    <script>
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        hash: true,
+        controls: false,
+        progress: true,
+        center: false,
+        transition: "fade",
+        backgroundTransition: "fade",
+        slideNumber: "c/t",
+        margin: 0.04,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Call FastAPI from frontend.</h1>
+    <button onclick="callAPI()">Click Me</button>
+
+    <p id="result"></p>
+
+    <script>
+      function callAPI() {
+        fetch("http://localhost:8000/hello")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("result").innerText = data.message;
+          });
+      }
+    </script>
+  </body>
+</html>
